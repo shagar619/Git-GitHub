@@ -138,3 +138,49 @@ git clone
 git push origin main
 git pull origin main
 ```
+
+### `origin` in Git
+
+In Git, `origin` is the default name given to the remote repository when clone a project or add a new remote.
+
+- It’s basically an alias (shortcut) for the remote repo URL (e.g., GitHub, GitLab, Bitbucket).
+- Instead of typing the long repo URL every time, just use `origin`.
+
+**📌 Example 1: Cloning a Repository**
+
+When clone a repo from GitHub:
+```bash
+git clone https://github.com/user/project.git
+```
+
+Git automatically creates a remote named `origin` that points to:
+```arduino
+https://github.com/user/project.git
+```
+
+Check it with:
+```bash
+git remote -v
+```
+
+**✅ Output:**
+```perl
+origin  https://github.com/user/project.git (fetch)
+origin  https://github.com/user/project.git (push)
+```
+
+**📌 Example 2: Adding origin Manually**
+
+If create a local repo with git init, later connect it to a remote:
+```bash
+git remote add origin https://github.com/user/project.git
+```
+
+Now `origin` = shortcut for that URL.
+
+When push code:
+```bash
+git push origin main
+```
+
+> This means → Push the `main` branch to the repo located at `origin`.
