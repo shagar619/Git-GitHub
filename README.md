@@ -184,3 +184,55 @@ git push origin main
 ```
 
 > This means → Push the `main` branch to the repo located at `origin`.
+
+### 📂 `.gitignore` file in Git
+
+The `.gitignore` file tells Git which files or folders it should ignore (not track) in a repository.
+
+- It prevents unnecessary, sensitive, or temporary files from being committed.
+- Each line in `.gitignore` specifies a pattern of files/folders to exclude.
+
+👉 Think of it as a filter that says:
+“Hey Git, don’t bother tracking these files.”
+
+**📌 Why Do Need `.gitignore`**
+
+- Avoid cluttering your repo with files that are auto-generated or not useful to others.
+- Protect sensitive info like API keys or passwords.
+- Prevent OS or editor-specific junk files from being shared.
+
+**📌 Common Files/Folders to Ignore**
+
+- `node_modules/` → For Node.js projects (dependencies).
+- `*.log` → Log files.
+- `*.env` → Environment variable files (sensitive info).
+- `dist/` or `build/` → Compiled output folders.
+- `.DS_Store` → macOS system files.
+- `Thumbs.db` → Windows system files.
+- `.vscode/` → VSCode settings folder.
+- `*.class` → Compiled Java files.
+- `*.pyc` → Compiled Python files.
+- `*.swp` → Vim swap files.
+- `*.exe` → Executable files.
+- `*.zip` or `*.tar.gz` → Compressed files.
+- `*.iml` → IntelliJ IDEA project files.
+- `*.out` → Compiled output files.
+- `*.o` or `*.obj` → Compiled object files.
+- `*.bak` → Backup files.
+- `*.tmp` → Temporary files.
+- `*.cache` → Cache files.
+- `*.dll` or `*.so` → Dynamic libraries.
+
+**📌 Important Notes**
+
+- `.gitignore` only works on untracked files.
+If a file is already tracked, Git will continue tracking it unless you remove it first:
+```bash
+git rm --cached filename
+```
+
+- can have global .gitignore (for all repos on your system):
+```bash
+git config --global core.excludesfile ~/.gitignore_global
+```
+
