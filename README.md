@@ -253,3 +253,32 @@ git config --global init.defaultBranch main
 # show configuration
 git config --list
 ```
+
+**📁 Create & clone repositories**
+```bash
+# initialize a new repo (local)
+git init               # creates .git folder
+
+# clone remote repository (creates local copy)
+git clone https://github.com/org/repo.git
+# clone into specific directory
+git clone <url> my-repo
+```
+
+> `git clone` over SSH use `git@github.com:org/repo.git`.
+
+**📊 Status / inspection**
+```bash
+git status             # what changed / staged / untracked
+git diff               # unstaged changes (working -> index)
+git diff --staged      # staged changes (index -> HEAD)
+git diff HEAD          # difference between working tree and HEAD
+git ls-files           # list tracked files
+git show <commit>      # show a commit details (message + diff)
+git --no-pager log --oneline --graph --all  # compact commit graph
+git log                # detailed history
+git log --stat         # files changed summary
+git blame path/file    # who last changed each line
+git shortlog -sne      # contributor summary
+```
+
