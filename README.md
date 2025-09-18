@@ -402,3 +402,87 @@ git stash branch wip/stash stash@{0}  # create branch from stash
 
 > Use case: quick context switch when you need a clean working tree.
 
+**🕵️ Viewing & searching history**
+```bash
+git log --oneline --graph --decorate --all
+git log -p -S "functionName"      # search patch for text
+git log --author="Alice"          # commits by author
+git grep "TODO"                   # search working tree
+git bisect start
+git bisect bad HEAD
+git bisect good v1.2.0            # find commit that introduced a bug (binary search)
+```
+
+> `git bisect` is invaluable in large repos to find the commit that broke behavior.
+
+**🧩 Tags & releases**
+```bash
+git tag                     # list tags
+git tag -a v1.2.0 -m "Release 1.2.0"   # annotated tag
+git push origin v1.2.0
+git push --tags             # push all tags
+git describe --tags          # show nearest tag for current commit
+```
+
+**🧾 Patches & emailing**
+```bash
+git format-patch -n <base>   # generate patch files between base..HEAD
+git am <patchfile>           # apply mailbox patches
+git apply <patch.diff>       # apply patch file
+```
+
+**🔍 Recovery & rewriting history**
+
+Reflog — recover lost commits:
+```bash
+git reflog                 # show HEAD history (even after reset)
+git checkout -b rescue HEAD@{3}   # create branch from an older HEAD
+```
+
+Reset vs Revert (summary):
+
+- `git reset` rewrites local history (moves HEAD). Use locally, be cautious if pushed.
+- `git revert` creates a new commit that undoes a past commit — safe for shared history.
+
+Filter-branch / filter-repo (history rewrite):
+
+- `git filter-repo` (preferred current tool) or older `git filter-branch` can rewrite history to remove sensitive data (e.g., accidental secrets). This requires force-pushing and coordinating with team.
+
+
+**🧩 Cherry-pick**
+```bash
+git cherry-pick <commit>         # apply changes from a commit onto current branch
+git cherry-pick -x <commit>      # record original commit reference (-x)
+```
+
+**🧪 Debugging tools**
+```bash
+git bisect                     # find commit introducing bug using binary search
+git blame file                  # see who changed each line
+git diff --name-only HEAD~1..HEAD  # list files changed between revisions
+```
+
+**📦 Submodules, subtrees & worktrees**
+
+Submodule (link to another Git repo inside your repo):
+```bash
+git submodule add git@github.com:org/lib.git libs/lib
+git submodule update --init --recursive
+git submodule status
+```
+
+Worktree (multiple working directories from same repo):
+```bash
+git worktree add ../feature-2 feature/branch
+# now you can work on two branches simultaneously in separate folders
+```
+
+> Subtree is alternative to submodule — consider depending on needs.
+
+**🧰 Maintenance & housekeeping**
+```bash
+git gc --aggressive --prune=now   # garbage collect (cleanup)
+git fsck                          # check repository integrity
+git prune                         # remove unreachable objects
+```
+
