@@ -282,3 +282,71 @@ git blame path/file    # who last changed each line
 git shortlog -sne      # contributor summary
 ```
 
+Example:
+```bash
+git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short -n 15
+```
+
+**➕ Staging & committing**
+```bash
+git branch                    # list branches (local)
+git branch -a                 # list all (including remotes)
+git branch feature/awesome    # create branch (no checkout)
+git checkout feature/awesome  # old: switch to branch
+# modern commands:
+git switch -c feature/awesome # create and switch
+git switch feature/awesome    # switch to existing branch
+```
+
+Example workflow:
+```bash
+git switch -c feature/login   # create a feature branch
+# do work...
+git add .
+git commit -m "feat(login): implement API integration"
+```
+
+**🔗 Merging, rebasing & integrating**
+
+Merge (preserve history):
+```bash
+git switch main
+git pull origin main
+git merge feature/login       # merges feature into main (creates merge commit)
+```
+
+Fast-forward only:
+```bash
+git merge --ff-only feature/login
+```
+
+Rebase (linearize history):
+```bash
+git switch feature/login
+git fetch origin
+git rebase origin/main        # reapply commits onto latest main
+# resolve conflicts if any, then:
+git rebase --continue
+# push (force-with-lease recommended after rebase)
+git push --force-with-lease origin feature/login
+```
+
+When to use:
+
+- Use merge for public branches (preserves merge structure).
+- Use rebase for local cleanup or to keep a feature branch up-to-date before PR — but do not rebase published commits unless everyone agrees.
+
+Interactive rebase (squash/modify history):
+```bash
+git rebase -i HEAD~5  # edit last 5 commits (squash, fixup, reorder)
+```
+
+**🔁 Pull & fetch**
+```bash
+git fetch origin               # download objects and refs (does not change working tree)
+git pull                       # fetch + merge (default)
+git pull --rebase              # fetch + rebase (common in feature workflows)
+```
+
+> `git fetch` + inspect (`git log origin/main..HEAD`) before merging/pulling in critical workflows.
+
