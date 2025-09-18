@@ -350,3 +350,55 @@ git pull --rebase              # fetch + rebase (common in feature workflows)
 
 > `git fetch` + inspect (`git log origin/main..HEAD`) before merging/pulling in critical workflows.
 
+
+**📤 Push & remotes**
+```bash
+git remote -v         # list remotes
+git remote add origin git@github.com:org/repo.git
+git push -u origin main     # first push: set upstream
+git push origin feature/branch
+git push --delete origin old-branch   # delete remote branch
+git push --force-with-lease origin feature/branch # safer force push
+```
+
+> `--force-with-lease` is preferred over `--force` as it's safer (fails if remote changed).
+
+**🔄 Undoing changes (safety first)**
+
+Unstage, restore, remove:
+```bash
+git restore file.txt                 # restore file from HEAD to working tree (newer command)
+git restore --staged file.txt        # unstage file (remove from index)
+# older equivalents:
+git reset HEAD file.txt              # unstage
+git checkout -- file.txt             # restore (older legacy)
+```
+
+Undo commits (local only):
+```bash
+git reset --soft HEAD^    # move HEAD back, keep changes in index (undo commit, keep staged)
+git reset --mixed HEAD^   # default: undo commit, unstages changes (keeps working tree)
+git reset --hard HEAD^    # WARNING: remove commit and working changes (destructive)
+```
+
+Revert (safe for public history):
+```bash
+git revert <commit>   # create a new commit that undoes <commit>
+```
+
+> Use `revert` when you need to undo a commit that has already been pushed/shared.
+
+
+**🧰 Stash — temporary shelve work**
+```bash
+git stash                 # stash staged + unstaged changes
+git stash push -m "WIP login feature"   # better: name stash
+git stash list
+git stash apply stash@{0} # reapply stash but keep it
+git stash pop             # reapply and drop stash
+git stash drop stash@{0}
+git stash branch wip/stash stash@{0}  # create branch from stash
+```
+
+> Use case: quick context switch when you need a clean working tree.
+
