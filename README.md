@@ -486,3 +486,77 @@ git fsck                          # check repository integrity
 git prune                         # remove unreachable objects
 ```
 
+**🛡 Security: signing commits & tags**
+```bash
+# enable signing
+git config --global user.signingkey <GPG-key-id>
+git config --global commit.gpgSign true
+
+# sign a tag
+git tag -s v1.2.0 -m "Signed release"
+```
+
+**🧩 Misc useful commands**
+```bash
+git archive --format=tar --output=../repo.tar HEAD   # export snapshot
+git bundle create repo.bundle --all                  # portable pack of a repo
+git restore --source=HEAD~1 -- path/file              # restore a file from earlier commit
+git credential-cache                                 # credential helper usage
+git help <command>                                   # open built-in help
+```
+
+
+
+#### 🧭 Collaboration workflows (practical examples)
+
+**Feature branch + PR workflow**
+```bash
+# local
+git switch -c feature/awesome
+# work, commit...
+git push -u origin feature/awesome
+# open Pull Request on GitHub, request review
+
+# after merge to main via PR:
+git switch main
+git pull origin main
+git branch -d feature/awesome        # delete local branch (if merged)
+git push origin --delete feature/awesome # delete remote branch
+```
+
+**Hotfix to production (safe)**
+```bash
+git switch main
+git pull origin main
+git switch -c hotfix/typo
+# fix and commit
+git push origin hotfix/typo
+# open PR, merge to main, then cherry-pick or merge to develop if needed
+```
+
+
+**Fork + PR workflow (open source)**
+```bash
+# fork repo on GitHub
+git clone
+git remote add upstream
+git fetch upstream
+git switch main
+git merge upstream/main
+git switch -c feature/awesome
+# work, commit...
+git push -u origin feature/awesome
+# open Pull Request from your fork to original repo
+```
+
+**Rebase feature branch onto updated main**
+```bash
+git switch feature/awesome
+git fetch origin
+git rebase origin/main
+# resolve conflicts if any
+git rebase --continue
+git push --force-with-lease origin feature/awesome
+```
+
+
