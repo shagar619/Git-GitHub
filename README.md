@@ -236,3 +236,20 @@ git rm --cached filename
 git config --global core.excludesfile ~/.gitignore_global
 ```
 
+
+### 🚀 Git Commands
+
+**🔧 Setup & config**
+`git config` — configure Git behavior (global or repo-level).
+```bash
+# set name/email (global)
+git config --global user.name "Your Name"
+git config --global user.email "you@company.com"
+
+# set editor, default branch name
+git config --global core.editor "code --wait"
+git config --global init.defaultBranch main
+
+# show configuration
+git config --list
+```
