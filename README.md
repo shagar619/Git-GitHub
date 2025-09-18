@@ -98,3 +98,43 @@ It allows you to:
 - Examples: Git, Mercurial.
 - ✅ Faster, offline work possible, safer backups.
 - ❌ Slightly more complex for beginners.
+
+
+### 📂 Repository in Git
+
+A Git repository (repo) is a storage space where Git tracks your project files and their history.
+
+It contains:
+
+- Project files (source code, documentation, etc.).
+- The entire version history (commits, branches, tags).
+- Git configuration (remote URLs, settings).
+
+👉 Think of a repository as a project folder + history of everything that ever happened in it.
+
+#### 📂 Types of Git Repositories
+
+**1. Local Repository**
+
+- Exists on your computer.
+- Created using:
+```bash
+git init
+```
+- Stores files + Git history inside the hidden `.git` folder.
+- Can work offline.
+- Use commands like `git add`, `git commit`, `git log` to manage it.
+
+**2. Remote Repository**
+
+- Hosted on a server (e.g., GitHub, GitLab, Bitbucket).
+- Allows collaboration with others.
+- Created by pushing a local repo to a remote server or cloning an existing remote repo.
+- Use commands like `git push`, `git pull`, `git clone` to interact with it.
+- Requires internet access.
+- Example:
+```bash
+git clone
+git push origin main
+git pull origin main
+```
