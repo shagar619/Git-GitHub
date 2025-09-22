@@ -1060,3 +1060,31 @@ git checkout -b new-feature
 - Use `git branch --merged` to see branches that have been merged into the current branch, and `git branch --no-merged` to see branches that have not been merged.
 - Branches are lightweight pointers to commits, making it easy to create and switch between different lines of development.
 
+
+### Revert a Public Commit
+
+To revert a public commit in Git, you can use the `git revert` command. This command creates a new commit that undoes the changes made by a previous commit, without altering the commit history. This is particularly useful for undoing changes in a shared repository where other collaborators may have already based their work on the original commit.
+
+**📌 Steps to Revert a Public Commit**
+
+1. **Identify the Commit Hash** → Use `git log` to find the hash of the commit you want to revert.
+```bash
+git log
+```
+
+2. **Revert the Commit** → Use the `git revert` command followed by the commit hash.
+```bash
+git revert <commit-hash>
+```
+
+3. **Resolve Conflicts (if any)** → If the commit you are reverting conflicts with other changes, Git will prompt you to resolve the conflicts. After resolving, stage the changes using `git add <file>` and then continue the revert process.
+```bash
+git add <file>
+git revert --continue
+```
+
+4. **Push the Revert Commit** → After successfully reverting the commit, push the new commit to the remote repository.
+```bash
+git push origin main
+```
+
