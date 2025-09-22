@@ -835,4 +835,41 @@ git fetch origin feature-branch
 git fetch --prune
 ```
 
+**📌 Important Notes**
+- `git fetch` does not modify your working directory or local branches. It only updates the remote-tracking branches (e.g., `origin/main`).
+- After fetching, you can inspect the changes using `git log origin/main` or `git diff main..origin/main`.
+- To integrate the fetched changes into your local branch, you can use `git merge` or `git rebase`.
+```bash
+git merge origin/main
+# or
+git rebase origin/main
+```
 
+### `git pull` command
+
+The `git pull` command is used to fetch updates from a remote repository and automatically merge them into your current local branch. It is essentially a combination of `git fetch` followed by `git merge`.
+
+**📌 Common Uses of `git pull`**
+
+1. **Pull Updates from Remote** → Fetch and merge changes from the remote repository into your current branch.
+```bash
+git pull origin main
+```
+
+2. **Pull with Rebase** → Fetch changes and reapply your local commits on top of the fetched branch (linear history).
+```bash
+git pull --rebase origin main
+```
+
+3. **Pull All Remotes** → Pull updates from all configured remote repositories (less common).
+```bash
+git pull --all
+```
+
+**📌 Important Notes**
+- `git pull` modifies your working directory and local branch by merging the fetched changes.
+- If there are conflicts between your local changes and the fetched changes, Git will prompt you to resolve them before completing the merge.
+- Use `git pull --rebase` to maintain a cleaner, linear commit history, especially when working on feature branches.
+- Always ensure your working directory is clean (no uncommitted changes) before running `git pull` to avoid complications.
+
+### `git push` command
