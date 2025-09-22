@@ -717,3 +717,34 @@ When you modify files in your working directory, those changes are not automatic
 3. Check the status with `git status` to see the staged changes.
 4. Commit the changes with `git commit -m "Your commit message"`.
 5. The changes are now permanently recorded in the repository.
+
+
+### `git checkout` command
+
+The `git checkout` command is used to switch between branches or restore files in your working directory. It allows you to navigate through different branches of your repository and manage the state of your files.
+
+**📌 Common Uses of `git checkout`**
+
+1. **Switching Branches** → Change the current branch to another branch.
+```bash
+git checkout feature-branch
+```
+
+2. **Creating and Switching to a New Branch** → Create a new branch and switch to it in one command.
+```bash
+git checkout -b new-feature
+```
+
+3. **Restoring Files** → Restore a file in your working directory to match the version in the index or a specific commit.
+```bash
+git checkout -- file.txt          # restore from index
+git checkout <commit> -- file.txt  # restore from specific commit
+```
+
+4. **Checkout a Specific Commit** → Switch to a specific commit by its hash.
+```bash
+git checkout <commit-hash>
+```
+
+
+
