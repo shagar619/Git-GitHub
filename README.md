@@ -693,3 +693,27 @@ git reset --hard HEAD~1
 - `--hard` → Moves the HEAD pointer, updates the staging area, and resets the working directory to match the specified commit. This discards all changes in the working directory and staging area.
 
 
+### 'Index' in git
+
+In Git, the "index" (also known as the "staging area") is an intermediate area where changes are gathered before they are committed to the repository. It acts as a buffer between the working directory (where you make changes) and the repository (where commits are stored).
+
+When you modify files in your working directory, those changes are not automatically included in the next commit. Instead, you need to explicitly add them to the index using the `git add` command. Once changes are staged in the index, they are ready to be committed with `git commit`.
+
+**📌 Key Points about the Index**
+
+1. **Staging Area** → The index holds a snapshot of the changes you want to include in the next commit.
+2. **Selective Staging** → You can choose which changes to stage, allowing for more granular commits.
+3. **Temporary Storage** → The index is a temporary area; changes in the index are not permanent until committed.
+4. **File States** → Files can be in one of three states: untracked, modified (unstaged), or staged (in the index).
+5. **Commands** → Common commands that interact with the index include:
+   - `git add <file>` → Stage changes to the index.
+   - `git reset <file>` → Unstage changes from the index.
+   - `git commit` → Commit staged changes from the index to the repository.
+
+**📌 Example Workflow with the Index**
+
+1. Make changes to a file in your working directory.
+2. Stage the changes using `git add <file>`.
+3. Check the status with `git status` to see the staged changes.
+4. Commit the changes with `git commit -m "Your commit message"`.
+5. The changes are now permanently recorded in the repository.
