@@ -909,3 +909,78 @@ git push --force-with-lease origin main
 - If you encounter issues while pushing, such as non-fast-forward errors, you may need to pull the latest changes from the remote repository first using `git pull`.
 - After pushing, you can verify the changes on the remote repository (e.g., GitHub, GitLab) to ensure your commits have been successfully uploaded.
 
+### `git merge` command
+
+The `git merge` command is used to combine changes from one branch into another. It integrates the histories of the two branches, creating a new commit that represents the merged state.
+
+**📌 Common Uses of `git merge`**
+
+1. **Merge a Branch into Current Branch** → Combine changes from a specified branch into your current branch.
+```bash
+git checkout main
+git merge feature-branch
+```
+2. **Fast-Forward Merge** → If the current branch is behind the target branch, Git will simply move the current branch pointer forward.
+```bash
+git merge --ff-only feature-branch
+```
+3. **No Fast-Forward Merge** → Create a merge commit even if a fast-forward is possible, preserving the branch history.
+```bash
+git merge --no-ff feature-branch
+```
+4. **Squash Merge** → Combine all commits from the target branch into a single commit on the current branch.
+```bash
+git merge --squash feature-branch
+git commit -m "Squashed commit message"
+```
+5. **Abort a Merge** → If you encounter conflicts during a merge and want to stop the process, you can abort the merge.
+```bash
+git merge --abort
+```
+**📌 Important Notes**
+- Before merging, ensure your working directory is clean (no uncommitted changes) to avoid complications.
+- If there are conflicts between the branches being merged, Git will prompt you to resolve them before completing the merge.
+- After resolving conflicts, use `git add <file>` to stage the resolved files and then run `git commit` to finalize the merge.
+- Use `git log --graph --oneline` to visualize the branch history and merges.
+- Merging is a common operation in collaborative workflows, such as feature branching and pull requests.
+
+### `git rebase` command
+
+The `git rebase` command is used to integrate changes from one branch into another by moving or combining a sequence of commits. It allows you to maintain a linear project history by applying your changes on top of another branch.
+
+**📌 Common Uses of `git rebase`**
+
+1. **Rebase Current Branch onto Another Branch** → Move the current branch to the tip of another branch.
+```bash
+git checkout feature-branch
+git rebase main
+```
+
+2. **Interactive Rebase** → Edit, squash, or reorder commits in your current branch.
+```bash
+git rebase -i HEAD~3  # Edit the last 3 commits
+```
+
+3. **Continue Rebase After Resolving Conflicts** → After resolving conflicts during a rebase, continue the process.
+```bash
+git rebase --continue
+```
+
+4. **Abort a Rebase** → If you encounter issues during a rebase and want to stop the process, you can abort the rebase.
+```bash
+git rebase --abort
+```
+
+5. **Rebase onto a Specific Commit** → Rebase the current branch onto a specific commit.
+```bash
+git rebase <commit-hash>
+```
+
+**📌 Important Notes**
+
+- Before rebasing, ensure your working directory is clean (no uncommitted changes) to avoid complications.
+- If there are conflicts during the rebase, Git will pause and prompt you to resolve them. After resolving conflicts, use `git add <file>` to stage the resolved files and then run `git rebase --continue` to proceed.
+- Rebasing rewrites commit history, so avoid rebasing commits that have already been pushed to a shared repository unless you coordinate with your team.
+- Use `git log --graph --oneline` to visualize the branch history and see the effects of the rebase.
+- Rebasing is commonly used in feature branch workflows to keep branches up to date with the main branch before merging.
+
