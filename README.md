@@ -617,3 +617,32 @@ git push origin main
 | **Purpose**          | Share your work.         | Stay updated with original project. |
 
 
+### `git status` command
+
+The `git status` command is one of the most frequently used commands in Git. It provides a summary of the current state of the working directory and the staging area.
+
+When you run `git status`, it shows:
+1. **Current Branch** → Which branch you are on.
+2. **Changes to be committed** → Files that are staged and ready to be committed.
+3. **Changes not staged for commit** → Files that have been modified but not yet staged.
+4. **Untracked files** → New files that are not being tracked by Git.
+5. **Instructions** → Suggestions on what commands to run next.
+
+**📌 Example Output of `git status`**
+```perl
+On branch main
+Your branch is up to date with 'origin/main'.
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file1.txt
+        new file:   file2.txt
+Changes not staged for commit:
+(use "git add <file>..." to update what will be committed)
+            modified:   file3.txt
+Untracked files:
+(use "git add <file>..." to include in what will be committed)
+        file4.txt
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+
