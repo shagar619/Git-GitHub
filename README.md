@@ -1088,3 +1088,16 @@ git revert --continue
 git push origin main
 ```
 
+
+### Difference between reverting and resetting
+
+- **Reverting** creates a new commit that undoes the changes made by a previous commit, preserving the commit history. This is useful for undoing changes in a shared repository without affecting other collaborators.
+
+- **Resetting**, on the other hand, moves the current branch pointer to a previous commit, effectively discarding all commits that came after it. This alters the commit history and can cause issues for collaborators who have based their work on the discarded commits.
+
+
+### Difference between git reflog and log
+
+- **`git log`** shows the commit history of the repository, displaying a list of commits in reverse chronological order. It provides information about each commit, such as the commit hash, author, date, and commit message. This command is useful for understanding the changes made to the codebase over time.
+- **`git reflog`** records updates to the tip of branches and other references in the repository. It tracks changes to the HEAD pointer, allowing you to see where the HEAD has been at different points in time. This is particularly useful for recovering lost commits or branches, as it provides a history of all movements of the HEAD, even those that are not part of the commit history shown by `git log`.
+
