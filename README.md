@@ -1021,3 +1021,42 @@ git rebase <commit-hash>
 - Use `git log --graph --oneline` to visualize the branch history and see the effects of the rebase.
 - Rebasing is commonly used in feature branch workflows to keep branches up to date with the main branch before merging.
 
+### `git branch` command
+
+The `git branch` command is used to manage branches in a Git repository. It allows you to create, list, rename, and delete branches.
+
+**📌 Common Uses of `git branch`**
+
+1. **List All Branches** → Show a list of all local branches in the repository.
+```bash
+git branch
+```
+
+2. **Create a New Branch** → Create a new branch with a specified name.
+```bash
+git branch new-feature
+```
+
+3. **Rename a Branch** → Change the name of an existing branch.
+```bash
+git branch -m old-branch new-branch
+```
+
+4. **Delete a Branch** → Remove a branch that is no longer needed.
+```bash
+git branch -d old-branch
+```
+
+5. **Create a New Branch and Switch to It** → Create a new branch and immediately switch to it.
+```bash
+git checkout -b new-feature
+```
+
+**📌 Important Notes**
+
+- Branch names should be descriptive and follow a consistent naming convention.
+- You cannot delete a branch that is currently checked out. Switch to a different branch before deleting.
+- Use `git branch -a` to list both local and remote branches.
+- Use `git branch --merged` to see branches that have been merged into the current branch, and `git branch --no-merged` to see branches that have not been merged.
+- Branches are lightweight pointers to commits, making it easy to create and switch between different lines of development.
+
