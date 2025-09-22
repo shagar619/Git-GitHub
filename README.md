@@ -809,3 +809,30 @@ git restore .
 - Always be cautious when using `git restore`, as it can overwrite changes in your working directory. Use `git status` to check the state of your files before restoring.
 
 
+### `git fetch` command
+
+The `git fetch` command is used to download updates from a remote repository without merging them into your local branches. It retrieves new commits, branches, and tags from the remote repository and updates your local copy of the remote-tracking branches.
+
+**📌 Common Uses of `git fetch`**
+
+1. **Fetch Updates from Remote** → Download changes from the remote repository.
+```bash
+git fetch origin
+```
+
+2. **Fetch All Remotes** → Fetch updates from all configured remote repositories.
+```bash
+git fetch --all
+```
+
+3. **Fetch Specific Branch** → Fetch updates for a specific branch from the remote.
+```bash
+git fetch origin feature-branch
+```
+
+4. **Fetch and Prune** → Remove any remote-tracking references that no longer exist on the remote.
+```bash
+git fetch --prune
+```
+
+
