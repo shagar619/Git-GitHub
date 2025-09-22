@@ -873,3 +873,39 @@ git pull --all
 - Always ensure your working directory is clean (no uncommitted changes) before running `git pull` to avoid complications.
 
 ### `git push` command
+
+The `git push` command is used to upload your local commits to a remote repository. It transfers the changes you have made in your local branches to the corresponding branches in the remote repository.
+
+**📌 Common Uses of `git push`**
+
+1. **Push Local Branch to Remote** → Upload your local branch to the remote repository.
+```bash
+git push origin main
+```
+2. **Set Upstream for Branch** → Push a new branch and set the remote branch as the upstream for tracking.
+```bash
+git push -u origin feature-branch
+```
+3. **Push All Branches** → Push all local branches to the remote repository.
+```bash
+git push --all origin
+```
+4. **Delete Remote Branch** → Remove a branch from the remote repository.
+```bash
+git push origin --delete old-branch
+```
+5. **Force Push** → Overwrite the remote branch with your local branch (use with caution).
+```bash
+git push --force origin main
+```
+6. **Force Push with Lease** → A safer version of force push that checks if the remote branch has changed before overwriting.
+```bash
+git push --force-with-lease origin main
+```
+**📌 Important Notes**
+- Use `git push` with caution, especially when force-pushing, as it can overwrite changes in the remote repository.
+- Always ensure your local branch is up to date with the remote branch before pushing.
+- Consider using `git push --force-with-lease` instead of `git push --force` for a safer force push.
+- If you encounter issues while pushing, such as non-fast-forward errors, you may need to pull the latest changes from the remote repository first using `git pull`.
+- After pushing, you can verify the changes on the remote repository (e.g., GitHub, GitLab) to ensure your commits have been successfully uploaded.
+
