@@ -751,6 +751,43 @@ git checkout <commit-hash>
 - When switching branches, any uncommitted changes in your working directory may be lost if they conflict with the target branch. Use `git stash` to save changes temporarily if needed.
 - The `git checkout` command has been partially replaced by `git switch` (for switching branches) and `git restore` (for restoring files) in newer versions of Git for better clarity.
 
+
+### `git remote` 
+
+The `git remote` command is used to manage remote repositories in Git. It allows you to view, add, remove, and modify the remote connections associated with your local repository.
+
+**📌 Common Uses of `git remote`**
+1. **View Remote Repositories** → List all configured remote repositories.
+```bash
+git remote -v
+```
+
+2. **Add a Remote Repository** → Add a new remote repository with a specified name and URL.
+```bash
+git remote add origin
+```
+
+3. **Remove a Remote Repository** → Remove a remote repository by its name.
+```bash
+git remote remove origin
+```
+4. **Rename a Remote Repository** → Change the name of an existing remote repository.
+```bash
+git remote rename origin upstream
+```
+
+5. **Show Remote Repository Details** → Display detailed information about a specific remote repository.
+```bash
+git remote show origin
+```
+
+**📌 Important Notes**
+- The default name for the primary remote repository is usually `origin`, but you can name it anything you like.
+- Use `git remote -v` to quickly see the URLs associated with each remote.
+
+
+
+
 ### `git switch` command
 
 The `git switch` command is a more user-friendly way to switch between branches in Git. It was introduced in Git 2.23 as part of an effort to simplify the user experience by separating branch switching from file restoration, which was previously handled by the `git checkout` command.
