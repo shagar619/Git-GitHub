@@ -672,3 +672,24 @@ git clean -fx
 git clean -fX
 ```
 
+### `git reset` command
+
+The `git reset` command is used to undo changes in your Git repository. It can modify the state of the staging area (index) and the working directory, depending on the options you use.
+
+**📌 Common Options for `git reset`**
+
+```bash
+# Soft reset (keep changes in working directory)
+git reset --soft HEAD~1
+
+# Mixed reset (keep changes in working directory, unstage them)
+git reset --mixed HEAD~1
+
+# Hard reset (discard all changes)
+git reset --hard HEAD~1
+```
+- `--soft` → Moves the HEAD pointer to a specified commit but leaves the staging area and working directory unchanged. This is useful for undoing a commit while keeping your changes staged.
+- `--mixed` (default) → Moves the HEAD pointer and updates the staging area to match the specified commit, but leaves the working directory unchanged. This unstages any changes that were previously staged.
+- `--hard` → Moves the HEAD pointer, updates the staging area, and resets the working directory to match the specified commit. This discards all changes in the working directory and staging area.
+
+
