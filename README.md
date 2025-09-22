@@ -746,5 +746,66 @@ git checkout <commit> -- file.txt  # restore from specific commit
 git checkout <commit-hash>
 ```
 
+**📌 Important Notes**
+
+- When switching branches, any uncommitted changes in your working directory may be lost if they conflict with the target branch. Use `git stash` to save changes temporarily if needed.
+- The `git checkout` command has been partially replaced by `git switch` (for switching branches) and `git restore` (for restoring files) in newer versions of Git for better clarity.
+
+### `git switch` command
+
+The `git switch` command is a more user-friendly way to switch between branches in Git. It was introduced in Git 2.23 as part of an effort to simplify the user experience by separating branch switching from file restoration, which was previously handled by the `git checkout` command.
+
+**📌 Common Uses of `git switch`**
+
+1. **Switching to an Existing Branch** → Change the current branch to another existing branch.
+```bash
+git switch feature-branch
+```
+
+2. **Creating and Switching to a New Branch** → Create a new branch and switch to it in one command.
+```bash
+git switch -c new-feature
+```
+
+3. **Switching to a Specific Commit** → Switch to a specific commit by its hash (detached HEAD state).
+```bash
+git switch --detach <commit-hash>
+```
+
+**📌 Important Notes**
+
+- `git switch` is focused solely on branch management, making it clearer and easier to use than `git checkout` for this purpose.
+- For restoring files, use the `git restore` command instead.
+
+### `git restore` command
+
+The `git restore` command is used to restore files in your working directory to a previous state. It was introduced in Git 2.23 to provide a clearer and more focused way to handle file restoration, separating this functionality from the `git checkout` command.
+
+**📌 Common Uses of `git restore`**
+
+1. **Restoring a File from the Index** → Restore a file in your working directory to match the version in the index (staging area).
+```bash
+git restore file.txt
+```
+
+2. **Restoring a File from a Specific Commit** → Restore a file to the state it was in at a specific commit.
+```bash
+git restore --source=<commit-hash> -- file.txt
+```
+
+3. **Unstaging a File** → Remove a file from the staging area (index) without changing the working directory.
+```bash
+git restore --staged file.txt
+```
+
+4. **Restoring All Files** → Restore all files in the working directory to match the index.
+```bash
+git restore .
+```
+
+**📌 Important Notes**
+
+- `git restore` is focused solely on file restoration, making it clearer and easier to use than `git checkout` for this purpose.
+- Always be cautious when using `git restore`, as it can overwrite changes in your working directory. Use `git status` to check the state of your files before restoring.
 
 
