@@ -1119,3 +1119,39 @@ git checkout <commit-hash>  # enters detached HEAD state
 git checkout main  # HEAD is attached to the 'main' branch
 ```
 
+### `git tag` command
+
+The `git tag` command is used to create, list, delete, and verify tags in a Git repository. Tags are references that point to specific commits, often used to mark important points in the commit history, such as releases or versions.
+
+**📌 Common Uses of `git tag`**
+
+1. **List All Tags** → Show a list of all tags in the repository.
+```bash
+git tag
+```
+
+2. **Create a Lightweight Tag** → Create a simple tag that points to the current commit.
+```bash
+git tag v1.0.0
+```
+
+3. **Create an Annotated Tag** → Create a tag with a message, author information, and date.
+```bash
+git tag -a v1.0.0 -m "Release version 1.0.0"
+```
+
+4. **View Tag Details** → Show information about a specific tag.
+```bash
+git show v1.0.0
+```
+
+5. **Delete a Tag** → Remove a tag from the local repository.
+```bash
+git tag -d v1.0.0
+```
+
+6. **Push Tags to Remote** → Upload tags to the remote repository.
+```bash
+git push origin v1.0.0          # push a specific tag
+git push origin --tags           # push all tags
+```
