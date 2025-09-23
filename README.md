@@ -1224,4 +1224,37 @@ function example() {
 }
 ```
 
+**5. Stage the resolved file**
+```bash
+git add app.js
+```
 
+**6. Complete the merge with a commit**
+```bash
+git commit -m "Resolved merge conflict in app.js"
+```
+
+**7. Push the changes to the remote repository (if needed)**
+```bash
+git push origin main
+```
+
+
+### Difference between `git merge` and `git rebase`
+
+| Feature              | **git merge**                     | **git rebase**                     |
+|----------------------|----------------------------------|-----------------------------------|
+| **Purpose**          | Combine changes from one branch into another, preserving history. | Move or combine commits to create a linear history. |
+| **History**          | Creates a merge commit, preserving the branch structure. | Rewrites commit history, creating a linear sequence of commits. |
+| **Conflict Resolution** | Conflicts are resolved during the merge process. | Conflicts are resolved during the rebase process. |
+| **Use Case**         | Ideal for integrating feature branches into main branches. | Ideal for updating feature branches with the latest changes from the main branch. |
+| **Complexity**       | Simpler to understand and use, especially for beginners. | More complex due to history rewriting; requires careful handling. |
+| **Collaboration**    | Safer for shared branches as it preserves history. | Can cause issues if rebasing commits that have been pushed to a shared repository. |
+| **Command Example**  | `git merge feature-branch`       | `git rebase main`                 |
+| **Resulting History**| Non-linear, with merge commits.  | Linear, without merge commits.     |
+
+```bash
+# Example commands
+git merge feature-branch
+git rebase main
+```
