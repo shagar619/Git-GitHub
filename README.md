@@ -1155,3 +1155,45 @@ git tag -d v1.0.0
 git push origin v1.0.0          # push a specific tag
 git push origin --tags           # push all tags
 ```
+
+
+### Resolve a conflict in Git
+
+When you encounter a merge conflict in Git, it means that changes from different branches or commits cannot be automatically merged. To resolve the conflict, follow these steps:
+
+#### 🛠️ Steps to Resolve a Conflict
+
+**1. Perform the action that causes the conflict**
+
+Example:
+```bash
+git merge feature-branch
+```
+
+**Git responds:**
+```perl
+Auto-merging app.js
+CONFLICT (content): Merge conflict in app.js
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+**2. Identify the conflicted files**
+
+Use `git status` to see which files are in conflict.
+```bash
+git status
+```
+
+**Output:**
+```perl
+On branch main
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   app.js
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+
