@@ -1196,4 +1196,32 @@ Unmerged paths:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
+**3. Open the conflicted file**
+
+You’ll see conflict markers:
+```javascript
+<<<<<<< HEAD
+function example() {
+    console.log("Main branch code");
+}
+=======
+function example() {
+    console.log("Feature branch code");
+}>>>>>>> feature-branch
+```
+
+- `<<<<<<< HEAD` → Your current branch (main).
+- `=======` → Separator between the two conflicting changes.
+- `>>>>>>> feature-branch` → The branch you are merging in (feature-branch).
+
+**4. Manually resolve the conflict**
+
+Edit the file to combine the changes as needed:
+```javascript
+function example() {
+    console.log("Main branch code");
+    console.log("Feature branch code");
+}
+```
+
 
