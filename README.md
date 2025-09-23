@@ -1101,3 +1101,21 @@ git push origin main
 - **`git log`** shows the commit history of the repository, displaying a list of commits in reverse chronological order. It provides information about each commit, such as the commit hash, author, date, and commit message. This command is useful for understanding the changes made to the codebase over time.
 - **`git reflog`** records updates to the tip of branches and other references in the repository. It tracks changes to the HEAD pointer, allowing you to see where the HEAD has been at different points in time. This is particularly useful for recovering lost commits or branches, as it provides a history of all movements of the HEAD, even those that are not part of the commit history shown by `git log`.
 
+
+
+### **HEAD** in Git
+
+- **Definition**: `HEAD` is a special pointer in Git that represents the current commit your working directory is based on. It usually points to the latest commit on the current branch.
+
+- **Usage**: You can use `HEAD` to refer to the current commit in various Git commands. For example, `git reset HEAD~1` will reset your branch to the commit before the current one.
+
+- **Detached HEAD**: If you check out a specific commit (not a branch), you enter a "detached HEAD" state. In this state, `HEAD` points directly to a commit rather than a branch. Be cautious when making changes in this state, as they can be lost if you switch branches without creating a new one.
+```bash
+git checkout <commit-hash>  # enters detached HEAD state
+```
+
+- **Attached HEAD**: When you are on a branch and make commits, `HEAD` is said to be "attached." In this state, `HEAD` points to the latest commit on the current branch, and any new commits will advance the branch pointer forward.
+```bash
+git checkout main  # HEAD is attached to the 'main' branch
+```
+
