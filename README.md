@@ -1262,3 +1262,35 @@ git rebase main
 ### language is used in GIT
 
 Git is primarily written in the C programming language. However, it also includes components written in other languages such as Shell scripting (Bash), Perl, and Python for various utilities and scripts that complement the core functionality of Git.
+
+### Add a file to the staging area
+
+To add a file to the staging area in Git, you can use the `git add` command followed by the file name. This prepares the file to be included in the next commit.
+
+#### 🛠️ Adding Files to Staging
+
+**1. Add a specific file**
+```bash
+git add <file>
+```
+
+**2. Add all changes in the current directory**
+```bash
+git add .
+```
+
+**3. Add all changes (including deleted files)**
+```bash
+git add -A
+```
+
+**4. Add all changes in a specific directory**
+```bash
+git add <directory>/
+```
+
+**5. Verify the staging area**
+```bash
+git status
+```
+
