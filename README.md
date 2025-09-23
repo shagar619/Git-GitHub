@@ -1258,3 +1258,7 @@ git push origin main
 git merge feature-branch
 git rebase main
 ```
+
+### language is used in GIT
+
+Git is primarily written in the C programming language. However, it also includes components written in other languages such as Shell scripting (Bash), Perl, and Python for various utilities and scripts that complement the core functionality of Git.
