@@ -1342,3 +1342,29 @@ git show e83c5163316f89bfbde7d9ab23ca2e25604af290      # Show details of the spe
 git revert e83c5163316f89bfbde7d9ab23ca2e25604af290    # Revert the specific commit
 ```
 
+
+### `git cherry-pick` command
+
+The `git cherry-pick` command is used to apply the changes introduced by a specific commit from one branch onto another branch. This allows you to selectively incorporate individual commits without merging entire branches.
+
+**📌 Common Uses of `git cherry-pick`**
+
+1. **Cherry-Pick a Single Commit** → Apply the changes from a specific commit to the current branch.
+```bash
+git cherry-pick <commit-hash>
+```
+
+2. **Cherry-Pick Multiple Commits** → Apply a range of commits to the current branch.
+```bash
+git cherry-pick <commit-hash1>^..<commit-hash2>
+```
+
+3. **Cherry-Pick with Conflict Resolution** → If conflicts arise during the cherry-pick, resolve them and continue.
+```bash
+git cherry-pick --continue
+```
+
+4. **Abort a Cherry-Pick** → If you want to stop the cherry-pick process, you can abort it.
+```bash
+git cherry-pick --abort
+```
