@@ -1368,3 +1368,42 @@ git cherry-pick --continue
 ```bash
 git cherry-pick --abort
 ```
+
+### Git object model
+
+Git's object model is a fundamental part of how Git stores and manages data. It is based on four main types of objects: blobs, trees, commits, and tags. Each object type serves a specific purpose in representing the state of the repository.
+
+**📌 Git Object Types**
+
+1. **Blob (Binary Large Object)** → Represents the contents of a file. Each version of a file is stored as a separate blob object, identified by its SHA-1 hash.
+
+Example:
+```bash
+echo "Hello Git" > hello.txt
+git add hello.txt
+```
+
+2. **Tree** → Represents a directory and contains references to blob objects (files) and other tree objects (subdirectories). A tree object captures the structure of the directory at a specific point in time.
+
+Example:
+```sql
+tree (root)
+ ├── hello.txt → blob
+ └── src/ → tree
+       └── app.js → blob
+        └── utils.js → blob
+```
+
+3. **Commit** → Represents a snapshot of the repository at a specific point in time. It contains metadata such as the author, date, commit message, and references to the tree object that represents the state of the repository at that commit. Commits also reference their parent commits, forming a linked history.
+
+Example:
+```bash
+git commit -m "Initial commit"
+```
+
+4. **Tag** → Represents a named reference to a specific commit. Tags are often used to mark important points in the commit history, such as releases or versions.
+
+Example:
+```bash
+git tag v1.0.0
+```
