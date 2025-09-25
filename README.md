@@ -1294,3 +1294,35 @@ git add <directory>/
 git status
 ```
 
+
+### `git diff` command
+
+The `git diff` command is used to show the differences between various states in a Git repository. It can compare changes in the working directory, staging area, and commits.
+
+**📌 Common Uses of `git diff`**
+
+1. **Show Changes in Working Directory** → Compare changes in the working directory against the staging area.
+```bash
+git diff
+```
+
+2. **Show Changes in Staging Area** → Compare changes in the staging area against the last commit.
+```bash
+git diff --staged
+```
+
+3. **Compare Two Commits** → Show differences between two specific commits.
+```bash
+git diff <commit-hash1> <commit-hash2>
+```
+
+4. **Compare a Commit with Working Directory** → Show differences between a specific commit and the working directory.
+```bash
+git diff <commit-hash>
+```
+
+5. **Compare a Commit with Staging Area** → Show differences between a specific commit and the staging area.
+```bash
+git diff --staged <commit-hash>
+```
+
