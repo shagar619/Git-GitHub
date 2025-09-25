@@ -1407,3 +1407,105 @@ Example:
 ```bash
 git tag v1.0.0
 ```
+
+
+### Git Hook
+
+- A Git hook is a script that Git runs automatically when certain events happen in a repository.
+- Hooks allow you to customize and automate Git’s behavior.
+- They are stored in the `.git/hooks/` directory of your repository.
+
+👉 Think of hooks as event listeners in Git.
+
+#### 📌 Types of Git Hooks
+
+Hooks are divided into two categories:
+
+**1. Client-Side Hooks**
+
+Run on your local machine during operations like:
+
+- `pre-commit` → before a commit is made
+- `prepare-commit-msg` → before commit message editor shows up
+- `commit-msg` → after the commit message is entered
+- `pre-push` → before pushing to remote
+- `pre-rebase` → before rebasing
+
+**2. Server-Side Hooks**
+
+Run on the remote repository (server) during operations like:
+
+- `pre-receive` → before a push is accepted
+- `update` → when a branch is updated
+- `post-receive` → after a push is accepted
+
+**✅ 1. Pre-commit Hook → Check Code Style**
+
+Prevent committing code with lint errors:
+
+`.git/hooks/pre-commit`:
+```bash
+#!/bin/sh
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "❌ Lint errors detected. Commit aborted."
+  exit 1
+fi
+```
+
+**✅ 2. Commit-msg Hook → Enforce Commit Message Format**
+
+`.git/hooks/commit-msg`:
+```bash
+#!/bin/sh
+commit_msg=$(cat "$1")
+if ! echo "$commit_msg" | grep -qE "^(feat|fix|docs|style|refactor|test|chore):"; then
+  echo "❌ Commit message must follow Conventional Commits format."
+  exit 1
+fi
+```
+
+**✅ 3. Pre-push Hook → Run Tests Before Pushing**
+
+`.git/hooks/pre-push`:
+```bash
+#!/bin/sh
+npm test
+if [ $? -ne 0 ]; then
+  echo "❌ Tests failed. Push aborted."
+  exit 1
+fi
+```
+
+**✅ 4. Server-Side Hook → Restrict Pushes to `main`**
+
+On the Git server in `.git/hooks/pre-receive`:
+```bash
+#!/bin/sh
+while read oldrev newrev refname
+do
+  branch=$(echo $refname | sed 's,refs/heads/,,')
+
+  if [ "$branch" = "main" ]; then
+    echo "❌ Direct pushes to main are not allowed."
+    exit 1
+  fi
+done
+```
+
+#### 📌 How to Use Git Hooks
+
+1. Go to your repo’s hooks directory:
+```bash
+cd .git/hooks
+```
+
+2. Copy a sample hook:
+```bash
+cp pre-commit.sample pre-commit
+```
+
+3. Make it executable:
+```bash
+chmod +x pre-commit
+```
