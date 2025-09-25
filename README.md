@@ -1326,3 +1326,19 @@ git diff <commit-hash>
 git diff --staged <commit-hash>
 ```
 
+
+### Git commit hash
+
+A Git commit hash is a unique identifier for a specific commit in a Git repository. It is generated using the SHA-1 hashing algorithm and consists of a 40-character hexadecimal string. The commit hash is used to reference and access specific commits in the repository's history.
+
+**📌 Example of a Git Commit Hash**
+```perl
+e83c5163316f89bfbde7d9ab23ca2e25604af290
+```
+**📌 Using Commit Hashes**
+```bash
+git checkout e83c5163316f89bfbde7d9ab23ca2e25604af290  # Switch to the specific commit
+git show e83c5163316f89bfbde7d9ab23ca2e25604af290      # Show details of the specific commit
+git revert e83c5163316f89bfbde7d9ab23ca2e25604af290    # Revert the specific commit
+```
+
