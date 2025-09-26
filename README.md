@@ -1774,3 +1774,11 @@ git am --abort   # Cancel patch apply
 git am --skip    # Skip conflicting patch
 git am --continue # Resolve conflict and continue
 ```
+**⚠️ Troubleshooting**
+
+If conflicts occur during `git am`:
+```bash
+git am --abort   # Cancel patch apply
+git am --skip    # Skip conflicting patch
+git am --continue # Resolve conflict and continue
+```
