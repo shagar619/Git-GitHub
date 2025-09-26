@@ -1774,11 +1774,20 @@ git am --abort   # Cancel patch apply
 git am --skip    # Skip conflicting patch
 git am --continue # Resolve conflict and continue
 ```
-**⚠️ Troubleshooting**
 
-If conflicts occur during `git am`:
+### Git Handles User Identity
+
+**Global config → default for all repos on machine.**
+
 ```bash
-git am --abort   # Cancel patch apply
-git am --skip    # Skip conflicting patch
-git am --continue # Resolve conflict and continue
+git config --global user.name "John Doe"
+git config --global user.email "john@personal.com"
 ```
+
+**Local (per repo) config → overrides global for that repo.**
+
+```bash
+git config user.name "Jane Smith"
+git config user.email "jane@work.com"
+```
+
