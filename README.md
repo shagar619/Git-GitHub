@@ -1710,3 +1710,38 @@ git format-patch -1 HEAD
 git format-patch -3 HEAD
 ```
 
+This generates files like:
+```yaml
+0001-fix-bug-in-login.patch
+0002-update-README.patch
+0003-add-tests.patch
+```
+
+**✅ 2. Fetch Patch from Remote Repo**
+
+If don’t have direct patch files but want to pull them from a remote branch:
+```bash
+# Add remote if not already added
+git remote add contributor https://github.com/user/project.git
+
+# Fetch the branch
+git fetch contributor feature-branch
+```
+
+**✅ 3. Apply the Patch**
+
+There are two main ways:
+
+**🔹 Method 1: git apply (applies changes only)**
+```bash
+git apply 0001-fix-bug-in-login.patch
+```
+
+- Applies changes to working directory.
+- Doesn’t create a commit automatically.
+- Need to manually commit:
+```bash
+git add .
+git commit -m "Apply patch: fix bug in login"
+```
+
