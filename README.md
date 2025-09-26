@@ -1745,3 +1745,32 @@ git add .
 git commit -m "Apply patch: fix bug in login"
 ```
 
+**🔹 Method 2: git am (apply and keep commit history)**
+```bash
+git am 0001-fix-bug-in-login.patch
+```
+
+- Applies the patch and creates a commit with original author info.
+- Best for maintaining contributor history.
+
+**✅ 4. Apply Patch Directly from Remote Repository**
+
+Instead of downloading the `.patch` file, apply directly:
+```bash
+# Example: apply patch from a GitHub commit
+curl https://github.com/user/repo/commit/<commit-hash>.patch | git am
+```
+
+Or for a pull request:
+```bash
+curl https://github.com/user/repo/pull/123.patch | git am
+```
+
+**⚠️ Troubleshooting**
+
+If conflicts occur during `git am`:
+```bash
+git am --abort   # Cancel patch apply
+git am --skip    # Skip conflicting patch
+git am --continue # Resolve conflict and continue
+```
