@@ -1689,5 +1689,24 @@ If you want to undo a specific commit without altering the commit history, you c
 git revert <commit-hash>
 ```
 
+### Apply a patch from a remote Git repository
 
+**A patch**
+
+- A patch is a text file containing the difference (`diff`) between commits.
+- Instead of sending the whole repo, you share just the changes.
+- Git can create patches and then apply them on another repo.
+
+#### 📌 Applying a Patch from a Remote Git Repository
+
+**✅ 1. Generate a Patch in the Remote Repository**
+
+On the contributor’s repo (remote side):
+```bash
+# Create a patch for the last commit
+git format-patch -1 HEAD
+
+# Create a patch for last 3 commits
+git format-patch -3 HEAD
+```
 
