@@ -1509,3 +1509,79 @@ cp pre-commit.sample pre-commit
 ```bash
 chmod +x pre-commit
 ```
+
+
+### Handle large files with Git
+
+Git LFS (Large File Storage) is an extension for Git that allows you to manage large files efficiently. It replaces large files in your repository with lightweight pointers, while storing the actual file contents on a remote server.
+
+#### 📌 Steps to Use Git LFS
+
+1. **Install Git LFS** → Download and install Git LFS from https://git-lfs.github.com/ or use a package manager.
+```bash
+git lfs install
+```
+
+2. **Track Large Files** → Specify which file types or specific files you want to manage with Git LFS.
+```bash
+git lfs track "*.psd"          # Track all Photoshop files
+git lfs track "large-video.mp4" # Track a specific large file
+```
+
+3. **Add .gitattributes to Repository** → Git LFS creates a `.gitattributes` file that contains the tracking rules. Make sure to add and commit this file to your repository.
+```bash
+git add .gitattributes
+git commit -m "Add .gitattributes for Git LFS"
+```
+
+4. **Add and Commit Large Files** → Add and commit your large files as usual. Git LFS will handle them automatically.
+```bash
+git add large-video.mp4
+git commit -m "Add large video file"
+```
+
+5. **Push to Remote Repository** → When you push your changes, Git LFS will upload the large files to the remote server.
+```bash
+git push origin main
+```
+
+6. **Clone a Repository with LFS Files** → When cloning a repository that uses Git LFS, the large files will be downloaded automatically.
+```bash
+git clone <repository-url>
+```
+
+#### Use `.gitignore` for Non-Essential Large Files
+
+To avoid tracking non-essential large files, you can use a `.gitignore` file to specify patterns for files and directories that Git should ignore.
+```bash
+# .gitignore
+*.log
+*.tmp
+/node_modules/
+/dist/
+```
+
+#### Use Git Submodules for Large Dependencies
+
+If your project depends on large libraries or assets, consider using Git submodules to include them as separate repositories. This keeps your main repository lightweight.
+```bash
+git submodule add <repository-url> path/to/submodule
+git submodule update --init --recursive
+```
+
+#### Clean Large Files from History (if already committed)
+If you have already committed large files to your repository and want to remove them from the history, you can use the `git filter-repo` tool (recommended) or `BFG Repo-Cleaner`.
+1. **Install git-filter-repo** → Follow the instructions at (`https://github.com/newren/git-filter-repo/blob/main/INSTALL.md`)
+
+2. **Run git-filter-repo** → Replace `path/to/large-file` with the actual path of the large file you want to remove.
+```bash
+git filter-repo --path path/to/large-file --invert-paths
+```
+
+3. **Force Push the Cleaned History** → After rewriting history, you need to force push the changes to the remote repository.
+```bash
+git push origin --force --all
+git push origin --force --tags
+```
+
+
