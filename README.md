@@ -1653,5 +1653,41 @@ git rm -f path/to/submodule
 ```
 
 
+### Undoing a Local Commit
+
+To undo a local commit in Git, you have several options depending on whether you want to keep the changes made in the commit or discard them entirely. Here are the most common methods:
+
+#### 🛠️ Methods to Undo a Local Commit
+
+**1. Undo the Last Commit but Keep Changes (Soft Reset)**
+This method moves the HEAD pointer back to the previous commit but keeps the changes in your working directory and staging area.
+```bash
+git reset --soft HEAD~1
+```
+
+**2. Undo the Last Commit and Unstage Changes (Mixed Reset)**
+This method moves the HEAD pointer back to the previous commit and unstages the changes, but keeps them in your working directory.
+```bash
+git reset --mixed HEAD~1
+```
+
+**3. Undo the Last Commit and Discard Changes (Hard Reset)**
+This method moves the HEAD pointer back to the previous commit and discards all changes made in the last commit. Use this with caution, as it will permanently delete the changes.
+```bash
+git reset --hard HEAD~1
+```
+
+**4. Amend the Last Commit**
+If you want to modify the last commit (e.g., change the commit message or add more changes), you can use the `--amend` option.
+```bash
+git commit --amend
+```
+
+**5. Revert a Specific Commit**
+If you want to undo a specific commit without altering the commit history, you can use the `git revert` command. This creates a new commit that undoes the changes made by the specified commit.
+```bash
+git revert <commit-hash>
+```
+
 
 
