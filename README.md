@@ -1791,3 +1791,24 @@ git config user.name "Jane Smith"
 git config user.email "jane@work.com"
 ```
 
+#### 📌 Configuring a Specific User for One Repository
+
+**Step 1: Navigate to the project**
+
+```bash
+cd /path/to/project
+```
+
+**Step 2: Set user details locally**
+
+```bash
+git config user.name "Jane Smith"
+git config user.email "jane@company.com"
+```
+
+**Step 3: Verify configuration**
+
+```bash
+git config user.name
+git config user.email
+```
