@@ -2065,5 +2065,23 @@ git bisect bad
 git bisect good
 ```
 
+**✅ 5. End bisect**
+
+When done:
+```bash
+git bisect reset
+```
+
+**⚡ Advanced: Automating with a Script**
+
+Instead of manually marking commits, automate with a test script.
+
+Example (script returns 0 = good, 1 = bad):
+```bash
+git bisect start
+git bisect bad
+git bisect good v1.0
+git bisect run npm test
+```
 
 
