@@ -1841,3 +1841,49 @@ f5d1e3b HEAD@{3}: commit: Initial commit
 - `HEAD@{0}` → current position.
 - `HEAD@{1}` → where HEAD was before last move.
 
+**✅ 1. Recover Lost Commits (after reset/rebase)**
+If accidentally did:
+
+```bash
+git reset --hard HEAD~2
+```
+
+```bash
+git reflog
+git checkout <lost-commit-hash>
+```
+
+**Or restore branch:**
+```bash
+git branch recovered <lost-commit-hash>
+```
+
+**✅ 2. Undo a Rebase**
+Rebasing rewrites history, and may get lost.
+
+```bash
+git reflog
+git reset --hard HEAD@{3}
+```
+
+**✅ 3. Find Old Branch State**
+If deleted a branch:
+
+```bash
+git branch -D feature-xyz
+```
+
+Recover it:
+```bash
+git reflog
+git branch feature-xyz <commit-hash>
+```
+
+**✅ 4. Go Back in Time**
+
+Example:
+```bash
+git reflog
+git checkout HEAD@{5}
+```
+
