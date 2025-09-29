@@ -2043,3 +2043,27 @@ Usually current commit:
 git bisect bad
 ```
 
+**✅ 3. Mark a known good commit (where bug didn’t exist)**
+
+Example: last release worked fine:
+```bash
+git bisect good v1.0
+```
+
+**✅ 4. Git checks out a middle commit**
+
+- Now test code (run program, run tests, etc.).
+- If bug is present:
+
+```bash
+git bisect bad
+```
+
+- If bug is absent:
+
+```bash
+git bisect good
+```
+
+
+
