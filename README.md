@@ -1959,3 +1959,58 @@ git remote remove upstream
 git remote rename upstream source
 ```
 
+### Fetch changes from multiple remotes in Git
+
+#### 🎯 Fetching from Multiple Remotes in Git
+
+**✅ 1. Fetch from a Specific Remote**
+
+```bash
+git fetch origin
+git fetch upstream
+```
+
+**✅ 2. Fetch from All Remotes at Once**
+
+```bash
+git fetch --all
+```
+
+- Runs a fetch for every remote configured in the repo.
+
+- Example: if you have `origin` and `upstream`, both will be updated.
+
+🔹 Add `--prune` to remove references to deleted remote branches:
+
+```bash
+git fetch --all --prune
+```
+
+**✅ 3. Fetch from Multiple Remotes Using Shortcuts**
+Show all remotes:
+
+```bash
+git remote -v
+```
+
+Example output:
+
+```scss
+origin   git@github.com:myuser/project.git (fetch)
+origin   git@github.com:myuser/project.git (push)
+upstream git@github.com:original/project.git (fetch)
+upstream git@github.com:original/project.git (push)
+```
+
+Loop through them:
+
+```bash
+for remote in $(git remote); do git fetch $remote; done
+```
+
+**✅ 4. Fetch Only a Specific Branch from a Remote**
+
+```bash
+git fetch upstream main
+```
+
