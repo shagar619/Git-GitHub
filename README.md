@@ -2014,3 +2014,16 @@ for remote in $(git remote); do git fetch $remote; done
 git fetch upstream main
 ```
 
+
+### Git bisect
+
+**`git bisect`**
+
+- It’s a binary search across commit history.
+- tell Git:
+
+  - A commit where the bug exists (bad).
+  - A commit where the bug did not exist (good).
+
+- Git then checks out commits in between → you test them → mark as good/bad.
+- After a few steps, Git identifies the first bad commit.
