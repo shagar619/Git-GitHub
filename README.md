@@ -1887,3 +1887,75 @@ git reflog
 git checkout HEAD@{5}
 ```
 
+### Manage multiple remotes in a Git repository
+
+#### 📌 Managing Multiple Remotes
+
+**✅ 1. Add a New Remote**
+
+```bash
+git remote add <name> <url>
+```
+
+Example:
+```bash
+git remote add upstream https://github.com/original/project.git
+```
+
+- `origin` → fork repo.
+- `upstream` → original repo.
+
+**✅ 2. List Remotes**
+
+```bash
+git remote -v
+```
+
+Example output:
+```scss
+origin   git@github.com:myuser/project.git (fetch)
+origin   git@github.com:myuser/project.git (push)
+upstream git@github.com:original/project.git (fetch)
+upstream git@github.com:original/project.git (push)
+```
+
+**✅ 3. Fetch from a Specific Remote**
+
+```bash
+git fetch upstream
+```
+
+- Downloads branches and commits from `upstream` without merging.
+
+**✅ 4. Pull from a Specific Remote**
+
+```bash
+git pull upstream main
+```
+
+- Fetches and merges `main` branch from `upstream`.
+
+**✅ 5. Push to a Specific Remote**
+
+```bash
+git push origin feature-branch
+```
+
+👉 Or push to another remote:
+
+```bash
+git push upstream feature-branch
+```
+
+**✅ 6. Remove a Remote**
+
+```bash
+git remote remove upstream
+```
+
+**✅ 7. Rename a Remote**
+
+```bash
+git remote rename upstream source
+```
+
