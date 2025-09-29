@@ -1812,3 +1812,32 @@ git config user.email "jane@company.com"
 git config user.name
 git config user.email
 ```
+
+### Git Reflog
+
+**Git Reflog**
+
+- `git reflog` (short for reference log) keeps a local history of all movements of `HEAD` (branches, commits, checkouts, resets, rebases, etc.).
+- Even if you lose a commit by resetting, rebasing, or deleting a branch, it’s still in the reflog (until garbage-collected).
+- Think of it as a safety net or a "time machine" for Git.
+
+**📌 Example: Using Git Reflog**
+
+**View reflog**
+
+```bash
+git reflog
+```
+
+**Output:**
+
+```pgsql
+a3f5c2d (HEAD -> main) HEAD@{0}: commit: Fix login bug
+7b9d2f1 HEAD@{1}: commit: Add login page UI
+e1c9a7a HEAD@{2}: reset: moving to e1c9a7a
+f5d1e3b HEAD@{3}: commit: Initial commit
+```
+
+- `HEAD@{0}` → current position.
+- `HEAD@{1}` → where HEAD was before last move.
+
