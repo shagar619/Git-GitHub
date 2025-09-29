@@ -2027,3 +2027,19 @@ git fetch upstream main
 
 - Git then checks out commits in between → you test them → mark as good/bad.
 - After a few steps, Git identifies the first bad commit.
+
+####  📌 Use git bisect
+
+**✅ 1. Start bisect**
+
+```bash
+git bisect start
+```
+
+**✅ 2. Mark the bad commit (where bug exists)**
+
+Usually current commit:
+```bash
+git bisect bad
+```
+
